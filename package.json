@@ -1,6 +1,6 @@
 {
   "name": "dokku",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The CLI Utility To Control A Remote Dokku Host.",
   "main": "build/index.js",
   "module": "src/index.js",
