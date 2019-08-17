@@ -24,7 +24,80 @@ yarn add dokku
 
 The program is compiled to be used from the CLI. The program is still under development.
 
-<afgufy>types/arguments.xml</argufy>
+<table>
+  
+   
+  <thead>
+    <tr>
+     <th>Argument</th> 
+     <th>Short</th>
+     <th>Description</th>
+    
+  </tr>
+   
+  </thead>
+  
+    
+  <tr>
+     <td>command</td>
+     <td></td>
+     <td>The command to execute.</td>
+    
+  </tr>
+  
+    
+  <tr>
+    
+       
+    <td>--host</td>
+    
+       
+    <td></td>
+    
+       
+    <td>
+      The host. If not given, reads executes <code>git remote</code> and uses <code>dokku</code> record.
+    </td>
+    
+      
+  </tr>
+  
+    
+  <tr>
+    
+       
+    <td>--app</td>
+    
+       
+    <td>-a</td>
+    
+       
+    <td>
+      The app. If not given, reads executes <code>git remote</code> and uses <code>dokku</code> record.
+    </td>
+    
+      
+  </tr>
+  
+    
+  <tr>
+    
+       
+    <td>--user</td>
+    
+       
+    <td></td>
+    
+       
+    <td>
+      Dokku user, used to look the host from git remote, and to connect. Default <code>dokku</code>.
+    </td>
+    
+      
+  </tr>
+  
+  
+</table>
 
 When run without the host and app arguments, `dokku` will execute `git remote -v` command, and extract those records that sign in with the dokku user. If there are more than one apps, the `app` is required.
 

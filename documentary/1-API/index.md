@@ -2,7 +2,7 @@
 
 The program is compiled to be used from the CLI. The program is still under development.
 
-<afgufy>types/arguments.xml</argufy>
+<argufy>types/arguments.xml</argufy>
 
 When run without the host and app arguments, `dokku` will execute `git remote -v` command, and extract those records that sign in with the dokku user. If there are more than one apps, the `app` is required.
 
