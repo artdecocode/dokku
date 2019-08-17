@@ -1,5 +1,9 @@
 ## 17 August 2019
 
+### [0.1.1](https://github.com/artdecocode/dokku/compare/v0.1.0...v0.1.1)
+
+- [fix] Fix the bin path.
+
 ### [0.1.0](https://github.com/artdecocode/dokku/compare/v0.0.1...v0.1.0)
 
 - [feature] Add implementation.

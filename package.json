@@ -28,7 +28,7 @@
     "src/bin/index.js"
   ],
   "bin": {
-    "dokku": "compile/bin/dokku",
+    "dokku": "compile/bin/dokku.js",
     "dokku-dev": "src/bin/index.js"
   },
   "repository": {
