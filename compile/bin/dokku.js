@@ -6,13 +6,13 @@ const stream = require('stream');
 const os = require('os');             
 const {spawn:m} = child_process;
 const {Writable:n} = stream;
-const p = (a, b = 0, c = !1) => {
+const q = (a, b = 0, c = !1) => {
   if (0 === b && !c) {
     return a;
   }
   a = a.split("\n", c ? b + 1 : void 0);
   return c ? a[a.length - 1] : a.slice(b).join("\n");
-}, r = (a, b = !1) => p(a, 2 + (b ? 1 : 0)), t = a => {
+}, r = (a, b = !1) => q(a, 2 + (b ? 1 : 0)), t = a => {
   ({callee:{caller:a}} = a);
   return a;
 };
@@ -31,13 +31,13 @@ const v = /\s+at.*(?:\(|\s)(.*)\)?/, w = /^(?:(?:(?:node|(?:internal\/[\w/]*|.*n
 function z(a, b, c = !1) {
   return function(e) {
     var d = t(arguments), {stack:f} = Error();
-    const g = p(f, 2, !0), k = (f = e instanceof Error) ? e.message : e;
+    const g = q(f, 2, !0), k = (f = e instanceof Error) ? e.message : e;
     d = [`Error: ${k}`, ...null !== d && a === d || c ? [b] : [g, b]].join("\n");
     d = y(d);
     return Object.assign(f ? e : Error(), {message:k, stack:d});
   };
 }
-;function A(a) {
+;function B(a) {
   var {stack:b} = Error();
   const c = t(arguments);
   b = r(b, a);
@@ -51,7 +51,7 @@ function z(a, b, c = !1) {
 };
 class D extends n {
   constructor(a) {
-    const {binary:b = !1, rs:c = null, ...e} = a || {}, {f:d = A(!0), proxyError:f} = a || {}, g = (k, l) => d(l);
+    const {binary:b = !1, rs:c = null, ...e} = a || {}, {f:d = B(!0), proxyError:f} = a || {}, g = (k, l) => d(l);
     super(e);
     this.b = [];
     this.c = new Promise((k, l) => {
@@ -65,8 +65,8 @@ class D extends n {
         if (-1 == h.stack.indexOf("\n")) {
           g`${h}`;
         } else {
-          const q = y(h.stack);
-          h.stack = q;
+          const p = y(h.stack);
+          h.stack = p;
           f && g`${h}`;
         }
         l(h);
@@ -83,7 +83,7 @@ class D extends n {
   }
 }
 const E = async a => {
-  ({promise:a} = new D({rs:a, f:A(!0)}));
+  ({promise:a} = new D({rs:a, f:B(!0)}));
   return await a;
 };
 const F = async a => {
@@ -147,8 +147,8 @@ const K = function(a = {}, b = process.argv) {
       ({value:l, argv:d} = I(d, g, k));
     } else {
       try {
-        const {short:h, boolean:q, number:P, command:B, multiple:Q} = k;
-        B && Q && c.length ? (l = c, e = !0) : B && c.length ? (l = c[0], e = !0) : {value:l, argv:d} = I(d, g, h, q, P);
+        const {short:h, boolean:p, number:O, command:A, multiple:P} = k;
+        A && P && c.length ? (l = c, e = !0) : A && c.length ? (l = c[0], e = !0) : {value:l, argv:d} = I(d, g, h, p, O);
       } catch (h) {
         return {a:d, ...f};
       }
@@ -156,7 +156,7 @@ const K = function(a = {}, b = process.argv) {
     return void 0 === l ? {a:d, ...f} : {a:d, ...f, [g]:l};
   }, {a:b});
 }({command:{description:"The command to execute.", command:!0, multiple:!0}, host:{description:"The host. If not given, reads executes `git remote` and uses `dokku` record."}, app:{description:"The app. If not given, reads executes `git remote` and uses `dokku` record.", short:"a"}, user:{description:"Dokku user, used to look the host from git remote, and to connect.", default:"dokku"}}), L = K.host, M = K.app, N = K.user || "dokku";
-const O = K.command || [], [R, ...S] = O;
+const Q = K.command || [], [R, ...S] = Q;
 (async() => {
   let a, b;
   if (!L || !M) {
@@ -183,24 +183,16 @@ const O = K.command || [], [R, ...S] = O;
   }
 })();
 const T = async(a, b) => {
-  var c = O;
-  if ("config" == R) {
-    c = [R, b];
+  if ("config:env" == R) {
+    const c = H(".env").toString().split("\n").join(" ");
+    b = ["config:set", b, c];
   } else {
-    if ("config:env" == R) {
-      c = H(".env").toString().split("\n").join(" "), c = ["config:set", b, c];
-    } else {
-      if ("config:get" == R) {
-        if (!S.length) {
-          throw Error("Usage: config:get <KEY>");
-        }
-        c = [R, b, ...S];
-      } else {
-        ["config:set", "config:unset"].includes(R) && (c = [R, b, ...S]);
-      }
+    if ("config:get" == R && !S.length) {
+      throw Error("Usage: config:get <KEY>");
     }
+    b = [R, b, ...S];
   }
-  b = c.join(" ");
+  b = b.join(" ");
   b.length && console.log(b);
   G("ssh", [a, b], {stdio:"inherit"});
 };

@@ -47,7 +47,7 @@
   "devDependencies": {
     "alamode": "2.4.0",
     "argufy": "^1.7.1",
-    "documentary": "1.32.0",
+    "documentary": "1.32.1",
     "eslint-config-artdeco": "1.0.1",
     "spawncommand": "^2.2.0",
     "yarn-s": "1.1.0",

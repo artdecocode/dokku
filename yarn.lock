@@ -40,10 +40,10 @@ catchment@^3.3.0:
     "@artdeco/clean-stack" "^1.1.1"
     erotic "^2.1.0"
 
-documentary@1.32.0:
-  version "1.32.0"
-  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.32.0.tgz#7dbd7b30c884fe1b70759019fda37d1ce904c397"
-  integrity sha512-HiU0lcfdZLX4MBtfzb9Q7dIjEmhn5KN5SfhXIl742nQMmEwwicupSnyjcv/9+0tr/a4URH27P8MGNZ6zK/QJzw==
+documentary@1.32.1:
+  version "1.32.1"
+  resolved "https://registry.yarnpkg.com/documentary/-/documentary-1.32.1.tgz#0efe3888b335dc6bddf2739c85be54d592c30411"
+  integrity sha512-pHjReOglL+DrOhPRDiO1SHKI2IOS5EZ4Qc8yiJnlyt+fvFBdtYYLxyfvoziXwaCduHnNuiYO7rLnz37jishZZA==
   dependencies:
     alamode "^2.4.0"
     preact "8.5.1"
