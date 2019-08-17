@@ -1,0 +1,14 @@
+<arguments>
+  <arg name="command" command multiple>
+    The command to execute.
+  </arg>
+  <arg name="host">
+    The host. If not given, reads executes `git remote` and uses `dokku` record.
+  </arg>
+  <arg name="app" short="a">
+    The app. If not given, reads executes `git remote` and uses `dokku` record.
+  </arg>
+  <arg name="user" default="dokku">
+    Dokku user, used to look the host from git remote, and to connect.
+  </arg>
+</arguments>

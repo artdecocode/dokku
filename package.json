@@ -11,8 +11,11 @@
     "mask": "yarn t test/mask",
     "test-build": "ALAMODE_ENV=test-build yarn test",
     "lint": "eslint .",
-    "doc": "NODE_DEBUG=doc doc documentary -o README.md",
+    "dev": "alanode src/bin/dokku",
+    "doc": "NODE_DEBUG=doc doc -o README.md",
     "b": "alamode src -o build -s",
+    "compile": "depack-dev src/bin/dokku.js -o compile/bin/dokku.js -c -a -p -O 2018 -s",
+    "args": "argufy types/arguments.xml -o src/bin/get-args.js",
     "d": "yarn-s d1",
     "d1": "NODE_DEBUG=doc doc src/index.js -g",
     "build": "yarn-s d b doc",
@@ -21,9 +24,13 @@
     "example/": "yarn e example/example.js"
   },
   "files": [
-    "build",
-    "src"
+    "compile",
+    "src/bin/index.js"
   ],
+  "bin": {
+    "dokku": "compile/bin/dokku",
+    "dokku-dev": "src/bin/index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/artdecocode/dokku.git"
@@ -39,8 +46,10 @@
   "homepage": "https://github.com/artdecocode/dokku#readme",
   "devDependencies": {
     "alamode": "1.7.3",
+    "argufy": "^1.7.1",
     "documentary": "1.21.1",
     "eslint-config-artdeco": "1.0.1",
+    "spawncommand": "^2.2.0",
     "yarn-s": "1.1.0",
     "zoroaster": "3.6.6"
   }
