@@ -5,7 +5,7 @@
 `dokku` is The CLI Utility To Control A Remote Dokku Host.
 
 ```sh
-yarn add -E dokku
+yarn add dokku
 ```
 
 ## Table Of Contents

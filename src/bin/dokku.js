@@ -53,17 +53,19 @@ const [action, ...rest] = command
 })()
 
 const run = async (Host, App) => {
-  let realCommand = command
-  if (action == 'config') {
-    realCommand = [action, App]
-  } else if (action == 'config:env') {
+  let realCommand
+  if (action == 'config:env') {
     const a = readFileSync('.env').toString()
     const vars = a.split('\n').join(' ')
     realCommand = ['config:set', App, vars]
   } else if (action == 'config:get') {
     if (!rest.length) throw new Error('Usage: config:get <KEY>')
     realCommand = [action, App, ...rest]
-  } else if (['config:set', 'config:unset'].includes(action)) {
+  }
+  // else if (['config:set', 'config:unset'].includes(action)) {
+  //   realCommand = [action, App, ...rest]
+  // }
+  else {
     realCommand = [action, App, ...rest]
   }
   const rc = realCommand.join(' ')

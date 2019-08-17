@@ -45,12 +45,12 @@
   },
   "homepage": "https://github.com/artdecocode/dokku#readme",
   "devDependencies": {
-    "alamode": "1.7.3",
+    "alamode": "2.4.0",
     "argufy": "^1.7.1",
-    "documentary": "1.21.1",
+    "documentary": "1.32.0",
     "eslint-config-artdeco": "1.0.1",
     "spawncommand": "^2.2.0",
     "yarn-s": "1.1.0",
-    "zoroaster": "3.6.6"
+    "zoroaster": "4.1.1-alpha"
   }
 }

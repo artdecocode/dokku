@@ -5,61 +5,94 @@
 `dokku` is The CLI Utility To Control A Remote Dokku Host.
 
 ```sh
-yarn add -E dokku
+yarn add dokku
 ```
 
 ## Table Of Contents
 
 - [Table Of Contents](#table-of-contents)
-- [API](#api)
-- [`dokku(arg1: string, arg2?: boolean)`](#mynewpackagearg1-stringarg2-boolean-void)
-  * [`Config`](#type-config)
+- [CLI](#cli)
+- [Commands](#commands)
+  * [`config:env`](#configenv)
 - [Copyright](#copyright)
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/0.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/0.svg?sanitize=true">
+</a></p>
 
-## API
+## CLI
 
-The package is available by importing its default function:
+The program is compiled to be used from the CLI. The program is still under development.
 
-```js
-import dokku from 'dokku'
+<afgufy>types/arguments.xml</argufy>
+
+When run without the host and app arguments, `dokku` will execute `git remote -v` command, and extract those records that sign in with the dokku user. If there are more than one apps, the `app` is required.
+
+After that, each command will be constructed in the following way:
+
+```sh
+# dokku command ...rest
+ssh <host> command <app> ...rest
+
+# e.g.,
+# dokku config:set KEY=VALUE
+ssh <host> config:set <app> KEY=VALUE
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/1.svg?sanitize=true">
+</a></p>
 
-## `dokku(`<br/>&nbsp;&nbsp;`arg1: string,`<br/>&nbsp;&nbsp;`arg2?: boolean,`<br/>`): void`
+## Commands
 
-Call this function to get the result you want.
+The full list of commands is the same as what Dokku supports. There are some special commands.
 
-__<a name="type-config">`Config`</a>__: Options for the program.
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/2.svg?sanitize=true" width="25">
+</a></p>
 
-|   Name    |   Type    |    Description    | Default |
-| --------- | --------- | ----------------- | ------- |
-| shouldRun | _boolean_ | A boolean option. | `true`  |
-| __text*__ | _string_  | A text to return. | -       |
+### `config:env`
 
-```js
-/* yarn example/ */
-import dokku from 'dokku'
+The special `config:env` command will read the `.env` file, and execute the `config:set KEY=VALUE` command.
 
-(async () => {
-  const res = await dokku({
-    text: 'example',
-  })
-  console.log(res)
-})()
-```
-```
-example
+```sh
+dokku config:env
 ```
 
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/2.svg?sanitize=true"></a></p>
+```
+Will connect to dokku@artd.eco:example
+config:set example HELLO=world DOKKU=node.js
+-----> Setting config vars
+       HELLO:  world
+       DOKKU:  node.js
+-----> Restarting app example
+```
+
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/3.svg?sanitize=true">
+</a></p>
 
 ## Copyright
 
-(c) [Art Deco][1] 2019
+<table>
+  <tr>
+    <th>
+      <a href="https://artd.eco">
+        <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
+          alt="Art Deco">
+      </a>
+    </th>
+    <th>© <a href="https://artd.eco">Art Deco</a>   2019</th>
+    <th>
+      <a href="https://www.technation.sucks" title="Tech Nation Visa">
+        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
+          alt="Tech Nation Visa">
+      </a>
+    </th>
+    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
+  </tr>
+</table>
 
-[1]: https://artd.eco
-
-<p align="center"><a href="#table-of-contents"><img src=".documentary/section-breaks/-1.svg?sanitize=true"></a></p>
+<p align="center"><a href="#table-of-contents">
+  <img src="/.documentary/section-breaks/-1.svg?sanitize=true">
+</a></p>
