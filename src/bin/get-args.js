@@ -18,12 +18,13 @@ export const argsConfig = {
     default: 'dokku',
   },
 }
+
 const args = argufy(argsConfig)
 
 /**
  * The command to execute.
  */
-export const _command = /** @type {(!Array<string>|string)} */ (args['command'])
+export const _command = /** @type {!Array<string>} */ (args['command'])
 
 /**
  * The host. If not given, reads executes `git remote` and uses `dokku` record.

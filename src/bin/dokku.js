@@ -5,9 +5,34 @@ import { _command, _host, _app, _user } from './get-args'
 const command = _command || []
 const [action, ...rest] = command
 
+const run = async (Host, App) => {
+  let realCommand
+  if (action == 'config:env') {
+    const a = readFileSync('.env', 'utf8')
+    const vars = a.split('\n').join(' ')
+    realCommand = ['config:set', App, vars]
+  } else if (action == 'config:get') {
+    if (!rest.length) throw new Error('Usage: config:get <KEY>')
+    realCommand = [action, App, ...rest]
+  }
+  // else if (['config:set', 'config:unset'].includes(action)) {
+  //   realCommand = [action, App, ...rest]
+  // }
+  else {
+    realCommand = [action, App, ...rest]
+  }
+  const rc = realCommand.join(' ')
+  if (rc.length) console.log(rc)
+  // return
+
+  spawn('ssh', [Host, rc], /** @type {!child_process.SpawnOptions} */ ({
+    stdio: 'inherit',
+  }))
+}
+
 ;(async () => {
   // if (_command) throw new Error('please specify command')
-  let Host, App
+  let Host = _host, App = _app
   if (!_host || !_app) {
     const p = spawn('git', ['remote', '-v'])
     const { stdout } = await p.promise
@@ -51,28 +76,3 @@ const [action, ...rest] = command
   }
   // const p = spawn(_command)
 })()
-
-const run = async (Host, App) => {
-  let realCommand
-  if (action == 'config:env') {
-    const a = readFileSync('.env').toString()
-    const vars = a.split('\n').join(' ')
-    realCommand = ['config:set', App, vars]
-  } else if (action == 'config:get') {
-    if (!rest.length) throw new Error('Usage: config:get <KEY>')
-    realCommand = [action, App, ...rest]
-  }
-  // else if (['config:set', 'config:unset'].includes(action)) {
-  //   realCommand = [action, App, ...rest]
-  // }
-  else {
-    realCommand = [action, App, ...rest]
-  }
-  const rc = realCommand.join(' ')
-  if (rc.length) console.log(rc)
-  // return
-
-  spawn('ssh', [Host, rc], /** @type {!child_process.SpawnOptions} */ ({
-    stdio: 'inherit',
-  }))
-}
