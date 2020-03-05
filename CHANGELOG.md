@@ -1,3 +1,9 @@
+## 5 March 2020
+
+### [0.1.2](https://github.com/artdecocode/dokku/compare/v0.1.1...v0.1.2)
+
+- [fix] Fix passing HOST and APP.
+
 ## 17 August 2019
 
 ### [0.1.1](https://github.com/artdecocode/dokku/compare/v0.1.0...v0.1.1)

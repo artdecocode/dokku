@@ -1,6 +1,6 @@
 # dokku
 
-[![npm version](https://badge.fury.io/js/dokku.svg)](https://npmjs.org/package/dokku)
+[![npm version](https://badge.fury.io/js/dokku.svg)](https://www.npmjs.com/package/dokku)
 
 `dokku` is The CLI Utility To Control A Remote Dokku Host.
 
@@ -105,19 +105,12 @@ config:set example HELLO=world DOKKU=node.js
 <table>
   <tr>
     <th>
-      <a href="https://artd.eco">
+      <a href="https://www.artd.eco">
         <img width="100" src="https://raw.githubusercontent.com/wrote/wrote/master/images/artdeco.png"
           alt="Art Deco">
       </a>
     </th>
-    <th>© <a href="https://artd.eco">Art Deco</a>   2019</th>
-    <th>
-      <a href="https://www.technation.sucks" title="Tech Nation Visa">
-        <img width="100" src="https://raw.githubusercontent.com/idiocc/cookies/master/wiki/arch4.jpg"
-          alt="Tech Nation Visa">
-      </a>
-    </th>
-    <th><a href="https://www.technation.sucks">Tech Nation Visa Sucks</a></th>
+    <th>© <a href="https://www.artd.eco">Art Deco™</a>   2020</th>
   </tr>
 </table>
 
